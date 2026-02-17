@@ -2,7 +2,7 @@ import React from "react";
 
 function ProfilePage () {
     return(
-        <h1>Homepahe</h1>
+        <h1>Profile</h1>
     )
 }
 

@@ -5,6 +5,8 @@ import { ProfilePage } from "./componentes/ProfilePage"
 import { Menu } from "./componentes/Menu"
 
 
+// con hashrouter nuestra ruta empezará siempre con #      
+
 function App() {
 
   return (
@@ -16,7 +18,7 @@ function App() {
           <Route path="/" element={<HomePage/>} />
           <Route path="/blog" element={<BlogPage/>} />
           <Route path="/profile" element={<ProfilePage/>} />
-          <Route path="*" element={<p>Not found</p>}/>
+          <Route path="*" element={<p>Not found</p>}/>  {/* cualquier ruta que no esté creada va a salir ese parrafo */}
         </Routes>
       </HashRouter>
     </>
