@@ -6,7 +6,7 @@ function Menu() {
         <nav>
             <ul>
                 {routes.map(route => (
-                    <li>
+                    <li key={route.to}>
                         <NavLink to={route.to} style={({isActive}) => ({
                         color:  isActive ? "green" : "red"
                     })}>{route.text}</NavLink>
@@ -57,9 +57,3 @@ routes.push({
 })
 
 export { Menu };
-
-// la etiqueta a, cuando hacemos click recarga toda la pagina y ademas hay que poner el # , pero con link directamente va a la ruta sin recargar toda la pagina y tampoco hay que poner el #
-
-// la etiqueta a, cuando hacemos click recarga toda la pagina y ademas hay que poner el # , pero con Navlink directamente va a la ruta sin recargar toda la pagina y tampoco hay que poner el # y ademas nos permite añadirle estilos segun estemos en esa ruta o no.
-
-//NavLink tiene un problema y es que es muy repetitivo y si hay muchos tienes que ir pues poniendo estilos a cada uno, para ahorrarnos tiempo hacemos lo siguiente, tenemos un array donde le estamos agregando tres objetos que corresponden a las rutas, hacemos un punto map y por cada ruta que haya en nuestro array creamos un lis item donde el to va a ser route.to y el nombre va a ser route.text y le agregamos el estilo, lo cual solo lo escribimos una vez
