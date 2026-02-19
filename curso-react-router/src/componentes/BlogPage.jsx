@@ -1,6 +1,6 @@
 import React from "react";
 import { BlogLink } from "./BlogLink";
-import { blogdata} from "../blogdata"
+import { blogdata} from "../apis/blogdata"
 
 function BlogPage () {
     return(
@@ -9,7 +9,7 @@ function BlogPage () {
 
             <ul>
                 {blogdata.map(post => (
-                    <BlogLink key={post.slug} post={post}/> // le estás pasando una prop llamada post al componente BlogLink, y su valor es la variable post.
+                    <BlogLink key={post.slug} post={post}/>
                 ))}
             </ul>
         </>

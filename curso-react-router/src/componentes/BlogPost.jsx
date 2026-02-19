@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate, useParams} from "react-router-dom";
-import { blogdata } from "../blogdata"
+import { blogdata } from "../apis/blogdata"
 
 function BlogPost () {
 
-    const { slug } = useParams(); // useParams nos trae lo que haya detras de :
-    const navigate = useNavigate(); // useNavigate sirve para navegar sin usar useParams
+    const { slug } = useParams();
+    const navigate = useNavigate();
 
     const post = blogdata.find(p => p.slug === slug);
 

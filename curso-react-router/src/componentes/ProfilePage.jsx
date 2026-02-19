@@ -1,8 +1,15 @@
 import React from "react";
+import { useAuth } from "../auth";
 
 function ProfilePage () {
+
+    const auth = useAuth();
+
     return(
-        <h1>Profile</h1>
+        <>
+            <h1>Perfil</h1>
+            <p>Bienvenido, {auth.user.username}</p>
+        </>
     )
 }
 
