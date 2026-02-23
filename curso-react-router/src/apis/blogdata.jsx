@@ -9,7 +9,7 @@ blogdata.push({
     title: "Aprende React Router",
     slug: "aprende-react-router",
     content: "React router sirve para tener varias páginas",
-    author: "Ismael"
+    author: "Nicolas"
 });
 blogdata.push({
     title: "Aprende Vite",

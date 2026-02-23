@@ -1,5 +1,6 @@
 import React from "react";
-import { useAuth} from "../auth"
+import { useAuth } from "../auth"
+import { Navigate } from "react-router-dom";
 
 function LoginPage() {
 
@@ -9,6 +10,10 @@ function LoginPage() {
     const login = (event) => {
         event.preventDefault();
         auth.login({username});
+    }
+
+    if(auth.user){
+        return <Navigate to="/profile" /> // cuanto intente entrar a /login un usuario que está autenticado se vca a redirigir a /profile
     }
 
     return(

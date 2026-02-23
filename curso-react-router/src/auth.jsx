@@ -1,40 +1,49 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom"
+import React from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
-const AuthContext = React.createContext(); // como la autorizacion la vamos a necesitar siempre, creamos un contexto ya que permite que muchos componentes accedan al mismo estado global fácilmente.
+const adminList = ["Ismael", "Nerea", "Manuel"]
+const editList = ["Rafa", "Nico"]
+const AuthContext = React.createContext();
 
-function AuthProvider({children}) {
+function AuthProvider({ children }) {
+  const navigate = useNavigate();
+  const [user, setUser] = React.useState(null);
 
-    const navigation = useNavigate()
-    const [user, setUser] = React.useState(null);
+  const login = ( {username} ) => {
+    const isAdmin = adminList.find(admin => admin === username) // si coinciden se le va a agregar la propiedad isAdmin
+    setUser({username, isAdmin});
+    navigate('/profile');
+  };
+  
+  const logout = () => {
+    setUser(null);
+    navigate('/');
+  };
+  
+  const auth = { user, login, logout };
 
-    const login = ({username}) => {
-        setUser({username});
-        navigation("/profile")
-    }
-
-    const logout = () => {
-        setUser(null);
-        navigation("/")
-    }
-
-    const auth = {
-        user,
-        login,
-        logout
-    }
-
-    return(
-        <AuthContext.Provider value={auth}>
-            {children}
-        </AuthContext.Provider>
-    )
+  return (
+    <AuthContext.Provider value={auth}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
-function useAuth() { // creamos este useAuth para que no tengamos que poner todo el rato, useContext, AuthCOntext, ya que los que guardamos en useAuth es eso mismo
-    const auth = useContext(AuthContext);
-    return auth
+function useAuth() {
+  const auth = React.useContext(AuthContext);
+  return auth;
 }
 
 
-export { AuthProvider, useAuth}
+function AuthRoute(props) {
+  const auth = useAuth();
+
+  if (!auth.user) {
+    return <Navigate to="/login" />;
+  }
+
+  return props.children;
+}
+
+
+export { AuthProvider, AuthRoute, useAuth };
