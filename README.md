@@ -39,4 +39,11 @@ curso-react-router/
 ├─ index.html
 └─ package.json
 
-💻 Instalación
+## ▶️ Cómo ejecutar el proyecto
+
+### 1️⃣ Clonar repositorio
+
+```bash
+git clone https://github.com/Ismabc05/curso-react-router.git
+cd curso-react-router
+
